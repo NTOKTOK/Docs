@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>N·TOKTOK 문서 센터</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2563EB;
+            --primary-dark: #1E40AF;
+            --bg-color: #F8FAFC;
+            --card-bg: #FFFFFF;
+            --text-main: #1E293B;
+            --text-sub: #64748B;
+            --border-color: #E2E8F0;
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 1.25rem 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo span {
+            color: var(--text-main);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 5rem 0 3rem;
+            text-align: center;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--text-main) 0%, var(--primary-color) 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.02em;
+        }
+
+        .hero p {
+            font-size: 1.125rem;
+            color: var(--text-sub);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Cards Grid */
+        .grid-section {
+            padding: 2rem 0 5rem;
+            flex: 1;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            padding: 1rem 0;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 2rem;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+            height: 100%;
+        }
+
+        .card:hover:not(.disabled) {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary-color);
+        }
+
+        .card.disabled {
+            opacity: 0.7;
+            cursor: default;
+            background: #F1F5F9;
+        }
+
+        .card-icon {
+            width: 48px;
+            height: 48px;
+            background: #EFF6FF;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+            font-size: 1.5rem;
+        }
+
+        .card.disabled .card-icon {
+            background: #E2E8F0;
+            color: #94A3B8;
+        }
+
+        .card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 0.75rem;
+        }
+
+        .card p {
+            color: var(--text-sub);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .card-link {
+            display: inline-flex;
+            align-items: center;
+            font-weight: 600;
+            color: var(--primary-color);
+            font-size: 0.95rem;
+        }
+
+        .card-link svg {
+            width: 16px;
+            height: 16px;
+            margin-left: 0.25rem;
+            transition: transform 0.2s;
+        }
+
+        .card:hover:not(.disabled) .card-link svg {
+            transform: translateX(4px);
+        }
+
+        .badge {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            padding: 0.35rem 0.75rem;
+            background: #E2E8F0;
+            color: #64748B;
+            font-size: 0.75rem;
+            font-weight: 600;
+            border-radius: 9999px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .badge.active {
+            background: #DCFCE7;
+            color: #166534;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--card-bg);
+            border-top: 1px solid var(--border-color);
+            padding: 2rem 0;
+            margin-top: auto;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-weight: 700;
+            color: var(--text-sub);
+        }
+
+        .copyright {
+            color: #94A3B8;
+            font-size: 0.875rem;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 640px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="container header-content">
+            <a href="#" class="logo">
+                N·TOKTOK <span>Docs</span>
+            </a>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>N·TOKTOK 문서 센터</h1>
+                <p>N·TOKTOK 플랫폼의 사용법과 가이드를 확인하세요.<br>더 쉽고 편리한 서비스 이용을 도와드립니다.</p>
+            </div>
+        </section>
+
+        <section class="grid-section">
+            <div class="container">
+                <div class="card-grid">
+                    <!-- 톡톡 신청서 Card -->
+                    <a href="toktok-form.html" class="card">
+                        <span class="badge active">Available</span>
+                        <div class="card-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" />
+                                <polyline points="14 2 14 8 20 8" />
+                                <path d="M16 13H8" />
+                                <path d="M16 17H8" />
+                                <path d="M10 9H8" />
+                            </svg>
+                        </div>
+                        <h3>톡톡 신청서</h3>
+                        <p>초등돌봄·교육 신청을 위한 가이드입니다.</p>
+                        <div class="card-link">
+                            메뉴얼 보기
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12" />
+                                <polyline points="12 5 19 12 12 19" />
+                            </svg>
+                        </div>
+                    </a>
+
+                    <!-- 톡톡 학생관리마스터 Card (Coming Soon) -->
+                    <div class="card disabled">
+                        <span class="badge">준비중</span>
+                        <div class="card-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                                <circle cx="9" cy="7" r="4" />
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                            </svg>
+                        </div>
+                        <h3>톡톡 학생관리마스터</h3>
+                        <p>학생들의 시간표, 수강정보, 이동동선 등을 관리하는 시스템입니다.</p>
+                        <div class="card-link">
+                            오픈 예정
+                        </div>
+                    </div>
+
+                    <!-- 톡톡 방과후 마스터 Card (Coming Soon) -->
+                    <div class="card disabled">
+                        <span class="badge">준비중</span>
+                        <div class="card-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
+                                <line x1="8" y1="21" x2="16" y2="21" />
+                                <line x1="12" y1="17" x2="12" y2="21" />
+                            </svg>
+                        </div>
+                        <h3>톡톡 방과후 마스터</h3>
+                        <p>방과후 강사료, 자유수강권 등 회계 관리용 가이드입니다.</p>
+                        <div class="card-link">
+                            오픈 예정
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-logo">N·TOKTOK</div>
+            <div class="copyright">
+                &copy; 2025 N·TOKTOK. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>
