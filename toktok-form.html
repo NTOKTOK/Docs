@@ -550,6 +550,20 @@
                     <div class="step-content">
                         <h3>설정 수정</h3>
                         <p>좌측 파일 목록에서 <code>settings.gs</code>를 클릭하고, 학교 상황에 맞게 옵션을 수정합니다.</p>
+                        <div class="alert alert-warning">
+                            <span class="alert-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" style="width: 24px; height: 24px;">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
+                                </svg>
+                            </span>
+                            <div>
+                                <strong>주의: 저장 필수!</strong><br>
+                                수정 후 파일명(<code>settings.gs</code>) 옆에 <strong>주황색 동그라미</strong>가 보이거나 상단에 저장되지 않음 표시가
+                                있다면, 반드시 상단 툴바의 <strong>디스켓 아이콘(💾)</strong>을 눌러 저장해주세요. (자동 저장이 즉시 되지 않을 수 있습니다.)
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -663,8 +677,8 @@
                 <pre><code>features: {
   enableMorningCare: <span class="editable">true</span>,   // 아침돌봄
   enableEveningCare: <span class="editable">true</span>,   // 저녁돌봄
-  enableDismissalTime: <span class="editable">false</span>, // 하교시간 입력 (돌봄 학생 대상)
-  showPeriodTimes: <span class="editable">true</span>     // 시간표에 시간 표시 여부
+  enableDismissalTime: <span class="editable">true</span>, // 하교시간 입력 (돌봄 학생 대상)
+  showPeriodTimes: <span class="editable">false</span>     // 시간표에 시간 표시 여부
 }</code></pre>
             </div>
 
@@ -677,9 +691,6 @@
   
   // 요일별 시간 표시 예시
   { label: '2교시', time: '<span class="editable">월금 13:50-14:30, 화수목 14:00-14:40</span>' },
-  
-  // 시간 미표시 (공란)
-  { label: '3교시', time: '<span class="editable"></span>' },
 ]</code></pre>
             </div>
 
@@ -705,7 +716,7 @@
     // 4. 요일 묶음 (주 5일제 등)
     // true면 하루를 선택해도 해당 요일들이 모두 같이 선택됩니다.
     useDayBundle: <span class="editable">false</span>,
-    dayBundleDays: []
+    dayBundleDays: <span class="editable">['월', '수', '금']</span>
   },
   // ...
 ]</code></pre>
@@ -715,7 +726,7 @@
         <!-- Admin Guide -->
         <section id="admin">
             <div class="section-header">
-                <h2 class="section-title">실무사님의 효율적인 업무 활용</h2>
+                <h2 class="section-title">선생님의 효율적인 업무 활용</h2>
                 <p class="section-desc">클릭 한 번으로 끝내는 관리! 수요조사 마감 후, 구글 스프레드시트의 <strong>'톡톡 관리'</strong> 메뉴를 활용하세요.</p>
             </div>
 
@@ -745,7 +756,7 @@
                                         style="width: 20px; height: 20px; vertical-align: middle; margin-right: 4px;">
                                         <path stroke-linecap="round" stroke-linejoin="round"
                                             d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
-                                    </svg> 프로그램별 명단 확보</strong></td>
+                                    </svg> 프로그램별 명단</strong></td>
                             <td>'톡톡 관리 > [프로그램명] 페이지 생성' 클릭</td>
                             <td>해당 프로그램 신청 학생 명단만 따로 정리되어 추출되므로, 수기 취합 없이 바로 출석부로 활용할 수 있습니다.</td>
                         </tr>
@@ -801,6 +812,11 @@
                 <h3>Q. 설문을 마감(종료)하고 싶어요.</h3>
                 <p>A. 우측 상단 <strong>배포 > 배포 관리</strong> 메뉴로 이동하여, 현재 활성화된 배포 버전을 <strong>'보관(Archive)'</strong> 처리하면 더
                     이상 접속할 수 없게 됩니다.</p>
+            </div>
+            <div class="card" style="margin-bottom: 20px;">
+                <h3>Q. 링크를 클릭했는데 "현재 파일을 열 수 없습니다"라고 떠요.</h3>
+                <p>A. 브라우저에 여러 구글 계정이 로그인되어 있어 발생하는 문제입니다. <strong>시크릿 모드(크롬)나 프라이빗 모드</strong>를 열어 주소를 붙여넣거나, 다른 계정을
+                    로그아웃한 후 시도해주세요.</p>
             </div>
             <div class="card">
                 <h3>Q. 신청 내역을 삭제하고 싶어요.</h3>
