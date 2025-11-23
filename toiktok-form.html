@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>톡톡 신청서 - 초등돌봄·교육 수요조사 시스템 사용 설명서</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=JetBrains+Mono:wght@400&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #3b82f6;
+            --primary-dark: #2563eb;
+            --secondary: #10b981;
+            --accent: #f59e0b;
+            --danger: #ef4444;
+            --bg-page: #f8fafc;
+            --bg-card: #ffffff;
+            --text-main: #1e293b;
+            --text-sub: #475569;
+            --border: #e2e8f0;
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: var(--bg-page);
+            color: var(--text-main);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        a:hover {
+            color: var(--primary-dark);
+            text-decoration: underline;
+        }
+
+        code {
+            font-family: 'JetBrains Mono', monospace;
+            background-color: #f1f5f9;
+            padding: 0.2em 0.4em;
+            border-radius: 4px;
+            font-size: 0.9em;
+            color: #d946ef;
+        }
+
+        pre {
+            background-color: #334155;
+            /* Slate 700 - Softer Dark */
+            color: #f8fafc;
+            padding: 24px;
+            border-radius: 16px;
+            border: 1px solid #475569;
+            overflow-x: auto;
+            margin: 20px 0;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            box-shadow: inset 0 2px 4px 0 rgb(0 0 0 / 0.05);
+        }
+
+        pre code {
+            background-color: transparent;
+            color: inherit;
+            padding: 0;
+            font-size: inherit;
+        }
+
+        .editable {
+            background-color: #facc15;
+            /* Yellow 400 */
+            color: #000;
+            font-weight: 700;
+            padding: 2px 6px;
+            border-radius: 4px;
+            box-shadow: 0 0 15px rgba(250, 204, 21, 0.4);
+        }
+
+        /* Layout */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+            color: white;
+            padding: 100px 0 80px;
+            text-align: center;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+            margin-bottom: 60px;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            letter-spacing: -0.03em;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        header p {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+
+        .btn-start {
+            display: inline-block;
+            background-color: white;
+            color: var(--primary-dark);
+            padding: 12px 32px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+            text-decoration: none;
+        }
+
+        .btn-start:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+            text-decoration: none;
+        }
+
+        .btn-secondary {
+            display: inline-block;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(4px);
+            transition: all 0.2s;
+            text-decoration: none;
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            border-color: white;
+            transform: translateY(-2px);
+            text-decoration: none;
+        }
+
+        /* Sections */
+        section {
+            margin-bottom: 100px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title {
+            font-size: 2.25rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 16px;
+            display: inline-block;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 100%;
+            height: 8px;
+            background-color: rgba(59, 130, 246, 0.2);
+            position: absolute;
+            bottom: 4px;
+            left: 0;
+            z-index: -1;
+            border-radius: 4px;
+        }
+
+        .section-desc {
+            color: var(--text-sub);
+            font-size: 1.1rem;
+        }
+
+        /* Features Grid */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: var(--bg-card);
+            padding: 32px;
+            border-radius: 24px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary);
+        }
+
+        .icon-box {
+            width: 56px;
+            height: 56px;
+            background-color: #eff6ff;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            margin-bottom: 24px;
+            color: var(--primary);
+        }
+
+        .card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .card p {
+            color: var(--text-sub);
+            font-size: 1rem;
+        }
+
+        /* Timeline Steps */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 24px;
+            width: 2px;
+            background-color: var(--border);
+        }
+
+        .step {
+            position: relative;
+            padding-left: 64px;
+            margin-bottom: 48px;
+        }
+
+        .step:last-child {
+            margin-bottom: 0;
+        }
+
+        .step-number {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+            border: 4px solid var(--bg-page);
+            z-index: 1;
+        }
+
+        .step-content {
+            background: var(--bg-card);
+            padding: 24px;
+            border-radius: 16px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border);
+        }
+
+        .step-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+            color: var(--text-main);
+        }
+
+        .step-content p {
+            color: var(--text-sub);
+            margin-bottom: 16px;
+        }
+
+        /* Alert Box */
+        .alert {
+            padding: 16px 20px;
+            border-radius: 12px;
+            margin: 16px 0;
+            display: flex;
+            align-items: start;
+            gap: 12px;
+        }
+
+        .alert-info {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            color: #1e40af;
+        }
+
+        .alert-warning {
+            background-color: #fffbeb;
+            border: 1px solid #fde68a;
+            color: #92400e;
+        }
+
+        .alert-icon {
+            font-size: 1.2rem;
+        }
+
+        /* Tables */
+        .table-wrapper {
+            overflow-x: auto;
+            border-radius: 12px;
+            box-shadow: var(--shadow-sm);
+            margin-bottom: 30px;
+        }
+
+        .custom-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--bg-card);
+            min-width: 600px;
+            /* Ensure readable on mobile */
+        }
+
+        .custom-table th,
+        .custom-table td {
+            padding: 16px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .custom-table th {
+            background-color: #f1f5f9;
+            font-weight: 700;
+            color: var(--text-main);
+            white-space: nowrap;
+        }
+
+        .custom-table td {
+            color: var(--text-sub);
+        }
+
+        .custom-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* Highlight Box */
+        .highlight-box {
+            background: linear-gradient(135deg, #eff6ff 0%, #ffffff 100%);
+            border: 2px solid #bfdbfe;
+            border-radius: 16px;
+            padding: 30px;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .highlight-box h4 {
+            color: var(--primary-dark);
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .highlight-box p {
+            color: var(--text-main);
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1e293b;
+            color: #94a3b8;
+            padding: 60px 0;
+            text-align: center;
+            margin-top: 100px;
+        }
+
+        footer p {
+            margin-bottom: 10px;
+        }
+
+        footer a {
+            color: #fff;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header {
+                padding: 60px 0;
+                clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+            }
+
+            header h1 {
+                font-size: 2.2rem;
+            }
+
+            .timeline::before {
+                left: 20px;
+            }
+
+            .step {
+                padding-left: 56px;
+            }
+
+            .step-number {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+                left: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="container">
+            <h1>톡톡 신청서</h1>
+            <p>초등돌봄·교육 수요조사를 위한 가장 스마트한 솔루션<br>설치부터 관리까지, 누구나 쉽게 시작할 수 있습니다.</p>
+            <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+                <a href="#installation" class="btn-start">시작하기</a>
+                <a href="#configuration" class="btn-secondary">학교 맞춤 설정</a>
+                <a href="#faq" class="btn-secondary">자주 묻는 질문</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <!-- Introduction -->
+        <section id="intro">
+            <div class="section-header">
+                <h2 class="section-title">시스템의 두 가지 핵심 강점</h2>
+                <p class="section-desc">학부모님께는 편리함을, 선생님께는 업무 효율을 선물합니다.</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <div class="icon-box">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" style="width: 32px; height: 32px;">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M9.53 16.122a3 3 0 00-5.78 1.128 2.25 2.25 0 01-2.4 2.245 4.5 4.5 0 008.4-2.245c0-.399-.078-.78-.22-1.128zm0 0a15.998 15.998 0 003.388-1.62m-5.043-.025a15.994 15.994 0 011.622-3.395m3.42 3.42a15.995 15.995 0 004.764-4.648l3.876-5.814a1.151 1.151 0 00-1.597-1.597L14.146 6.32a15.996 15.996 0 00-4.649 4.763m3.42 3.42a6.776 6.776 0 00-3.42-3.42" />
+                        </svg>
+                    </div>
+                    <h3>디자인 (직관성)</h3>
+                    <p><strong>직관적인 선택 및 시간표 그리드</strong></p>
+                    <p style="margin-top: 10px;">학부모는 색상으로 구분된(핑크, 노랑, 초록 등) 시간표에서 원하는 프로그램을 한눈에 확인하고 선택합니다.</p>
+                </div>
+                <div class="card">
+                    <div class="icon-box">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" style="width: 32px; height: 32px;">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 0v3.75m-16.5-3.75v3.75m16.5 0v3.75C20.25 16.153 16.556 18 12 18s-8.25-1.847-8.25-4.125v-3.75m16.5 0c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125" />
+                        </svg>
+                    </div>
+                    <h3>데이터 (자동화)</h3>
+                    <p><strong>실시간 집계 및 구조화</strong></p>
+                    <p style="margin-top: 10px;">신청 내역이 Google Sheets에 실시간으로 저장되며, 귀가 정보와 동행자 정보가 별도 열에 체계적으로 정리되어 데이터
+                        관리가 매우 용이합니다.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Installation -->
+        <section id="installation">
+            <div class="section-header">
+                <h2 class="section-title">설치 및 배포 가이드</h2>
+                <p class="section-desc">Google 계정만 있다면 5분 안에 시스템을 구축할 수 있습니다.</p>
+            </div>
+
+            <div class="timeline">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>교육청 계정 로그인</h3>
+                        <p>먼저 브라우저에서 <strong>교육청 워크스페이스 계정(@dge.go.kr)</strong>으로 로그인해주세요.</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>사본 만들기</h3>
+                        <p>아래 링크를 클릭하여 구글 스프레드시트 사본을 생성합니다.</p>
+                        <div class="alert alert-info">
+                            <span class="alert-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" style="width: 24px; height: 24px;">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244" />
+                                </svg>
+                            </span>
+                            <div>
+                                <a href="https://docs.google.com/spreadsheets/d/15Mn09UBorVmy1TCx0CcRwFpvIdZN0EU5q1JChSte_i8/copy?usp=sharing"
+                                    target="_blank" style="font-weight:bold; text-decoration:underline;">[클릭] 톡톡 신청서 사본
+                                    만들기</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>스크립트 편집기 열기</h3>
+                        <p>생성된 스프레드시트 상단 메뉴에서 <strong>확장 프로그램 > Apps Script</strong>를 클릭하여 스크립트 편집기를 엽니다.</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>설정 수정</h3>
+                        <p>좌측 파일 목록에서 <code>settings.gs</code>를 클릭하고, 학교 상황에 맞게 옵션을 수정합니다.</p>
+                        <div class="alert alert-warning">
+                            <span class="alert-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" style="width: 24px; height: 24px;">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
+                                </svg>
+                            </span>
+                            <div>
+                                <strong>주의: 저장 필수!</strong><br>
+                                수정 후 파일명(<code>settings.gs</code>) 옆에 <strong>주황색 동그라미</strong>가 보이거나 상단에 저장되지 않음 표시가
+                                있다면, 반드시 상단 툴바의 <strong>디스켓 아이콘(💾)</strong>을 눌러 저장해주세요. (자동 저장이 즉시 되지 않을 수 있습니다.)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">5</div>
+                    <div class="step-content">
+                        <h3>웹 앱으로 배포</h3>
+                        <p>우측 상단 <strong>배포 > 새 배포</strong>를 클릭하고 아래와 같이 설정합니다.</p>
+                        <ul style="padding-left: 20px; margin: 10px 0;">
+                            <li><strong>유형 선택:</strong> 웹 앱</li>
+                            <li><strong>설명:</strong> (자유롭게 입력)</li>
+                            <li><strong>실행 계정:</strong> 나 (웹 앱을 실행하는 사용자)</li>
+                            <li><strong>액세스 권한:</strong> 모든 사용자 (학부모님이 로그인 없이 접속 가능하도록)</li>
+                        </ul>
+                        <div class="alert alert-warning">
+                            <span class="alert-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" style="width: 24px; height: 24px;">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
+                                </svg>
+                            </span>
+                            <div>
+                                <strong>중요:</strong> '액세스 권한'을 반드시 <strong>'모든 사용자'</strong>로 설정해야 학부모님이 구글 로그인 없이 설문에
+                                참여할 수 있습니다.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">6</div>
+                    <div class="step-content">
+                        <h3>액세스 승인 (최초 1회)</h3>
+                        <p>처음 배포 시 권한 승인 팝업이 뜹니다. 아래 순서대로 진행해주세요.</p>
+                        <ol style="padding-left: 20px; margin: 10px 0; color: var(--text-sub);">
+                            <li><strong>액세스 승인</strong> 클릭</li>
+                            <li>사용할 <strong>구글 계정</strong> 선택</li>
+                            <li><strong>'액세스 승인'</strong> 창이 뜨면 <strong>모든 항목에 체크(v)</strong>한 후
+                                <strong>Continue(계속)</strong>를 클릭하여 승인합니다.
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">7</div>
+                    <div class="step-content">
+                        <h3>URL 공유</h3>
+                        <p>배포가 완료되면 생성된 <strong>웹 앱 URL</strong>을 복사하여 가정통신문이나 문자로 학부모님께 안내합니다.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Configuration -->
+        <section id="configuration">
+            <div class="section-header">
+                <h2 class="section-title">학교 맞춤 설정</h2>
+                <p class="section-desc"><code>settings.gs</code> 파일을 수정하여 우리 학교에 딱 맞는 시스템을 만드세요.<br>
+                    <span class="editable" style="font-size: 0.9em; vertical-align: middle;">형광펜</span>으로 표시된 부분만 수정하시면
+                    됩니다.
+                </p>
+            </div>
+
+            <div class="card" style="margin-bottom: 30px;">
+                <h3>1. 기본 정보 및 개인정보 수집 동의</h3>
+                <p>학교 이름, 연락처, 그리고 개인정보 수집 동의 문구를 설정합니다.</p>
+                <div class="alert alert-info" style="margin-top: 15px; margin-bottom: 15px;">
+                    <span class="alert-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" style="width: 24px; height: 24px;">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.383a14.406 14.406 0 01-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 10-7.517 0c.85.493 1.509 1.333 1.509 2.316V18" />
+                        </svg>
+                    </span>
+                    <div>
+                        <strong>팁:</strong> 여러 줄의 긴 문장을 입력할 때는 <strong>백틱(`)</strong> 기호로 문장을 감싸야 합니다. (작은따옴표 ' 아님)
+                    </div>
+                </div>
+                <pre><code>basic: {
+  schoolName: '<span class="editable">동도초등학교</span>',
+  schoolContact: '<span class="editable">053-123-5678</span>',
+  title: '<span class="editable">2025학년도 초등돌봄·교육 수요조사</span>',
+  subtitle: '<span class="editable">희망하는 프로그램을 선택해주세요.</span>',
+  
+  // 개인정보 수집 안내 (백틱 ` 사용)
+  privacyNotice: `<span class="editable">본교는 교육활동을 위해...
+  (줄바꿈 가능)
+  ...동의합니다.</span>`
+}</code></pre>
+            </div>
+
+            <div class="card" style="margin-bottom: 30px;">
+                <h3>2. 알림사항 (상세 설명) 설정</h3>
+                <p>설문 상단에 표시될 공지사항이나 안내문을 설정합니다.</p>
+                <pre><code>description: {
+  enabled: <span class="editable">true</span>,  // 표시 여부 (true: 표시, false: 숨김)
+  title: '<span class="editable">알림사항</span>',
+  
+  // 안내 문구 (백틱 ` 사용)
+  content: `<span class="editable">주요 특징:
+  • 맞춤형 프로그램: ...
+  • 돌봄: ...</span>`
+}</code></pre>
+            </div>
+
+            <div class="card" style="margin-bottom: 30px;">
+                <h3>3. 기능 활성화 설정</h3>
+                <p>우리 학교에서 운영하는 프로그램만 켜고 끌 수 있습니다. (true: 사용, false: 미사용)</p>
+                <pre><code>features: {
+  enableMorningCare: <span class="editable">true</span>,   // 아침돌봄
+  enableEveningCare: <span class="editable">true</span>,   // 저녁돌봄
+  enableDismissalTime: <span class="editable">true</span>, // 하교시간 입력 (돌봄 학생 대상)
+  showPeriodTimes: <span class="editable">false</span>     // 시간표에 시간 표시 여부
+}</code></pre>
+            </div>
+
+            <div class="card" style="margin-bottom: 30px;">
+                <h3>4. 교시 및 시간 설정</h3>
+                <p>운영하는 교시를 정의합니다. 요일별로 시간이 다르다면 텍스트로 자유롭게 입력하세요.</p>
+                <pre><code>periods: [
+  // 단순 시간 표시
+  { label: '1교시', time: '<span class="editable">13:00-13:40</span>' },
+  
+  // 요일별 시간 표시 예시
+  { label: '2교시', time: '<span class="editable">월금 13:50-14:30, 화수목 14:00-14:40</span>' },
+]</code></pre>
+            </div>
+
+            <div class="card">
+                <h3>5. 과목(프로그램) 상세 설정</h3>
+                <p>각 과목별로 운영 방식을 세밀하게 조정할 수 있습니다.</p>
+                <pre><code>subjects: [
+  {
+    name: '맞춤형', // 시스템 고정 이름
+    
+    // 1. 사용 여부
+    enabled: <span class="editable">true</span>, 
+    
+    // 2. 선택 가능한 교시 (이 과목이 개설된 교시만 입력)
+    // 예: 1, 2교시만 운영하면 [1, 2]
+    availablePeriods: <span class="editable">[1, 2]</span>,
+    
+    // 3. 시간 묶음 (블록 타임)
+    // true면 아래 지정된 교시들이 한 번에 선택됩니다. (예: 2시간 연속 수업)
+    useTimeBundle: <span class="editable">true</span>,
+    timeBundlePeriods: <span class="editable">[1, 2]</span>,
+    
+    // 4. 요일 묶음 (주 5일제 등)
+    // true면 하루를 선택해도 해당 요일들이 모두 같이 선택됩니다.
+    useDayBundle: <span class="editable">false</span>,
+    dayBundleDays: <span class="editable">['월', '수', '금']</span>
+  },
+  // ...
+]</code></pre>
+            </div>
+        </section>
+
+        <!-- Admin Guide -->
+        <section id="admin">
+            <div class="section-header">
+                <h2 class="section-title">선생님의 효율적인 업무 활용</h2>
+                <p class="section-desc">클릭 한 번으로 끝내는 관리! 수요조사 마감 후, 구글 스프레드시트의 <strong>'톡톡 관리'</strong> 메뉴를 활용하세요.</p>
+            </div>
+
+            <div class="table-wrapper">
+                <table class="custom-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 20%;">업무 구분</th>
+                            <th style="width: 40%;">구체적인 활용 방법 (관리자 메뉴)</th>
+                            <th style="width: 40%;">업무 경감 효과</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke-width="1.5" stroke="currentColor"
+                                        style="width: 20px; height: 20px; vertical-align: middle; margin-right: 4px;">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z" />
+                                    </svg> 통계 및 현황 보고</strong></td>
+                            <td>'톡톡 관리 > 통계 페이지 생성' 클릭</td>
+                            <td>전체 응답 현황이 시각적인 그래프로 자동 생성되어, 미달/초과 현황을 즉시 파악하고 보고합니다.</td>
+                        </tr>
+                        <tr>
+                            <td><strong><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke-width="1.5" stroke="currentColor"
+                                        style="width: 20px; height: 20px; vertical-align: middle; margin-right: 4px;">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+                                    </svg> 프로그램별 명단</strong></td>
+                            <td>'톡톡 관리 > [프로그램명] 페이지 생성' 클릭</td>
+                            <td>해당 프로그램 신청 학생 명단만 따로 정리되어 추출되므로, 수기 취합 없이 바로 출석부로 활용할 수 있습니다.</td>
+                        </tr>
+                        <tr>
+                            <td><strong><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke-width="1.5" stroke="currentColor"
+                                        style="width: 20px; height: 20px; vertical-align: middle; margin-right: 4px;">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
+                                    </svg> 요일별 귀가 관리</strong></td>
+                            <td>수합 시트에서 하교 방법/동행자 연락처 열 필터링</td>
+                            <td>보호자 동행 필요 학생의 당일 명단을 쉽게 확보하여 안전 관리의 정확성 및 긴급 연락 시스템을 강화합니다.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="highlight-box">
+                <h4><span style="font-size: 1.5em; display: inline-flex; align-items: center;"><svg
+                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" style="width: 32px; height: 32px;">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.383a14.406 14.406 0 01-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 10-7.517 0c.85.493 1.509 1.333 1.509 2.316V18" />
+                        </svg></span> 시스템 활용 핵심</h4>
+                <p>톡톡 수강신청폼은 신청의 직관성을 높여 학부모의 부담을 줄이고,<br>수집된 데이터를 자동 관리 및 추출함으로써 업무를 최소화하는 데 가장 큰 도움이 됩니다.</p>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section id="faq">
+            <div class="section-header">
+                <h2 class="section-title">자주 묻는 질문</h2>
+            </div>
+
+            <div class="card" style="margin-bottom: 20px;">
+                <h3>Q. 수정을 했는데 반영이 안 돼요.</h3>
+                <p>A. Apps Script 코드를 수정했다면 반드시 <strong>'새 배포'</strong>를 해야 사용자에게 반영됩니다. '배포 관리'가 아닌 '새 배포'를 눌러 버전을
+                    업데이트해주세요.</p>
+            </div>
+            <div class="card" style="margin-bottom: 20px;">
+                <h3>Q. 사본 만들기 시 '액세스 권한 필요'라고 떠요.</h3>
+                <p>A. 교육청 계정이 아닌 개인 계정으로 접속해서 그렇습니다. 화면 하단의 계정명을 클릭하여 교육청 계정으로 전환해주세요.</p>
+            </div>
+            <div class="card" style="margin-bottom: 20px;">
+                <h3>Q. 교육청 워크스페이스 계정은 어떻게 만드나요?</h3>
+                <p>A. 학교 정보부(정보 담당 선생님)에 문의하시면 발급받으실 수 있습니다.</p>
+            </div>
+            <div class="card" style="margin-bottom: 20px;">
+                <h3>Q. "권한이 필요합니다"라고 떠요.</h3>
+                <p>A. 배포 시 '액세스 권한'을 '모든 사용자'로 설정하지 않아서 그렇습니다. 다시 배포하여 권한 설정을 확인해주세요.</p>
+            </div>
+            <div class="card" style="margin-bottom: 20px;">
+                <h3>Q. 설문을 마감(종료)하고 싶어요.</h3>
+                <p>A. 우측 상단 <strong>배포 > 배포 관리</strong> 메뉴로 이동하여, 현재 활성화된 배포 버전을 <strong>'보관(Archive)'</strong> 처리하면 더
+                    이상 접속할 수 없게 됩니다.</p>
+            </div>
+            <div class="card" style="margin-bottom: 20px;">
+                <h3>Q. 링크를 클릭했는데 "현재 파일을 열 수 없습니다"라고 떠요.</h3>
+                <p>A. 브라우저에 여러 구글 계정이 로그인되어 있어 발생하는 문제입니다. <strong>시크릿 모드(크롬)나 프라이빗 모드</strong>를 열어 주소를 붙여넣거나, 다른 계정을
+                    로그아웃한 후 시도해주세요.</p>
+            </div>
+            <div class="card">
+                <h3>Q. 신청 내역을 삭제하고 싶어요.</h3>
+                <p>A. '응답데이터' 시트에서 해당 행을 삭제하면 됩니다. 통계는 다시 '통계 페이지 생성'을 실행하면 갱신됩니다.</p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <p><strong>톡톡 신청서</strong> - 초등돌봄·교육 수요조사 시스템</p>
+            <p>Designed for Teachers, by <a href="https://n-toktok.com" target="_blank"
+                    style="color: #fff; text-decoration: underline;">N-TOKTOK</a>.</p>
+            <br>
+            <p style="font-size: 0.9rem; opacity: 0.7;">
+                본 시스템은 학교 현장의 업무 효율화를 위해 제작되었습니다.<br>
+                &copy; 2025 All Rights Reserved.
+            </p>
+        </div>
+    </footer>
+
+</body>
+
+</html>
