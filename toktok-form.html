@@ -540,12 +540,39 @@
                                         d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244" />
                                 </svg>
                             </span>
-                            <div>
-                                <a href="https://docs.google.com/spreadsheets/d/15Mn09UBorVmy1TCx0CcRwFpvIdZN0EU5q1JChSte_i8/copy?usp=sharing"
-                                    target="_blank" style="font-weight:bold; text-decoration:underline;">[클릭] 톡톡 신청서 사본
-                                    만들기</a>
+                            <div style="width: 100%;">
+                                <div
+                                    style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 8px;">
+                                    <a href="https://docs.google.com/spreadsheets/d/15Mn09UBorVmy1TCx0CcRwFpvIdZN0EU5q1JChSte_i8/copy?usp=sharing"
+                                        target="_blank" style="font-weight:bold; text-decoration:underline;">[클릭] 톡톡 신청서
+                                        사본 만들기</a>
+                                    <button onclick="copyLink()"
+                                        style="background: white; border: 1px solid #bfdbfe; color: #1e40af; padding: 4px 12px; border-radius: 4px; cursor: pointer; font-size: 0.9em; display: flex; align-items: center; gap: 4px;">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                            stroke-width="1.5" stroke="currentColor" style="width: 16px; height: 16px;">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M15.75 17.25v3.375c0 .621-.504 1.125-1.125 1.125h-9.75a1.125 1.125 0 01-1.125-1.125V7.875c0-.621.504-1.125 1.125-1.125H6.75a9.06 9.06 0 011.5.124m7.5 10.376h3.375c.621 0 1.125-.504 1.125-1.125V11.25c0-4.46-3.243-8.161-7.5-8.876a9.06 9.06 0 00-1.5-.124H9.375c-.621 0-1.125.504-1.125 1.125v3.5m7.5 10.375H9.375a1.125 1.125 0 01-1.125-1.125v-9.25m12 6.625v-1.875a3.375 3.375 0 00-3.375-3.375h-1.5" />
+                                        </svg>
+                                        링크 복사
+                                    </button>
+                                </div>
+                                <div style="font-size: 0.95em; color: #475569;">
+                                    <strong>Tip:</strong> 위 <strong>[링크 복사]</strong> 버튼을 누른 후, 크롬의 <strong>시크릿
+                                        창(Ctrl+Shift+N)</strong>을 열어 주소를 붙여넣으세요. 시크릿 창에서는 로그인이 유지되지 않으므로 개인 계정 충돌 없이
+                                    깔끔하게 교육청 계정으로만 로그인하여 진행할 수 있습니다.
+                                </div>
                             </div>
                         </div>
+                        <script>
+                            function copyLink() {
+                                const url = 'https://docs.google.com/spreadsheets/d/15Mn09UBorVmy1TCx0CcRwFpvIdZN0EU5q1JChSte_i8/copy?usp=sharing';
+                                navigator.clipboard.writeText(url).then(() => {
+                                    alert('링크가 복사되었습니다. 시크릿 창(Ctrl+Shift+N)을 열고 붙여넣기(Ctrl+V) 하세요.');
+                                }).catch(err => {
+                                    console.error('복사 실패:', err);
+                                });
+                            }
+                        </script>
                     </div>
                 </div>
 
@@ -562,6 +589,8 @@
                     <div class="step-content">
                         <h3>설정 수정</h3>
                         <p>좌측 파일 목록에서 <code>settings.gs</code>를 클릭하고, 학교 상황에 맞게 옵션을 수정합니다.</p>
+                        <p style="margin-top: 8px;"><a href="#configuration"
+                                style="font-weight: 600; font-size: 0.95em;">👉 학교 맞춤 설정 방법 자세히 보기</a></p>
                         <div class="alert alert-warning">
                             <span class="alert-icon">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -614,10 +643,23 @@
                         <ol style="padding-left: 20px; margin: 10px 0; color: var(--text-sub);">
                             <li><strong>액세스 승인</strong> 클릭</li>
                             <li>사용할 <strong>구글 계정</strong> 선택</li>
+                            <li>
+                                <strong>'Google에서 확인하지 않은 앱'</strong> 화면이 나오면:
+                                <ul style="margin-top: 4px; margin-bottom: 8px;">
+                                    <li>좌측 하단 <strong>'고급(Advanced)'</strong> 클릭</li>
+                                    <li>가장 아래 <strong>'톡톡 신청서(으)로 이동(안전하지 않음)'</strong> 클릭</li>
+                                </ul>
+                            </li>
                             <li><strong>'액세스 승인'</strong> 창이 뜨면 <strong>모든 항목에 체크(v)</strong>한 후
                                 <strong>Continue(계속)</strong>를 클릭하여 승인합니다.
                             </li>
                         </ol>
+                        <div class="alert alert-info" style="margin-top: 10px;">
+                            <span class="alert-icon">💡</span>
+                            <div>
+                                <strong>팁:</strong> 팝업 차단이 되어있으면 창이 뜨지 않을 수 있습니다. 주소창 우측의 팝업 차단 아이콘을 확인해주세요.
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -626,6 +668,9 @@
                     <div class="step-content">
                         <h3>URL 공유</h3>
                         <p>배포가 완료되면 생성된 <strong>웹 앱 URL</strong>을 복사하여 가정통신문이나 문자로 학부모님께 안내합니다.</p>
+                        <div style="font-size: 0.9em; color: #64748b; margin-top: 8px;">
+                            ※ URL 끝이 <code>/exec</code>로 끝나는지 확인해주세요. (<code>/dev</code>로 끝나면 안 됩니다.)
+                        </div>
                     </div>
                 </div>
             </div>
@@ -728,7 +773,7 @@
     // 4. 요일 묶음 (주 5일제 등)
     // true면 하루를 선택해도 해당 요일들이 모두 같이 선택됩니다.
     useDayBundle: <span class="editable">false</span>,
-    dayBundleDays: <span class="editable">['월', '수', '금']</span>
+    dayBundleDays: <span class="editable">['월', '화', '수', '목', '금']</span>
   },
   // ...
 ]</code></pre>
@@ -739,7 +784,10 @@
         <section id="admin">
             <div class="section-header">
                 <h2 class="section-title">선생님의 효율적인 업무 활용</h2>
-                <p class="section-desc">클릭 한 번으로 끝내는 관리! 수요조사 마감 후, 구글 스프레드시트의 <strong>'톡톡 관리'</strong> 메뉴를 활용하세요.</p>
+                <p class="section-desc">클릭 한 번으로 끝내는 관리! 수요조사 마감 후, 구글 스프레드시트의 <strong>'톡톡 관리'</strong> 메뉴를 활용하세요.<br>
+                    <span style="font-size: 0.85em; color: #ef4444;">(참고: 스프레드시트를 열고 메뉴가 나타나기까지 몇 초 정도 걸릴 수
+                        있습니다.)</span>
+                </p>
             </div>
 
             <div class="table-wrapper">
@@ -797,6 +845,44 @@
             </div>
         </section>
 
+        <!-- Closing Guide -->
+        <section id="closing">
+            <div class="section-header">
+                <h2 class="section-title">설문 마감하기</h2>
+                <p class="section-desc">수요조사 기간이 끝나면 더 이상 응답을 받지 않도록 설문을 종료할 수 있습니다.</p>
+            </div>
+
+            <div class="timeline">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>배포 관리 메뉴 이동</h3>
+                        <p>스크립트 편집기 우측 상단의 <strong>배포 > 배포 관리</strong>를 클릭합니다.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>배포 보관(Archive)</h3>
+                        <p>현재 활성화된(Active) 배포 버전의 우측 아이콘을 클릭하여 <strong>'보관(Archive)'</strong>을 선택합니다.</p>
+                        <div class="alert alert-warning">
+                            <span class="alert-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" style="width: 24px; height: 24px;">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
+                                </svg>
+                            </span>
+                            <div>
+                                <strong>주의:</strong> 보관 처리하면 기존에 배포된 URL로 접속 시 <strong>"파일을 찾을 수 없음"</strong> 등의 에러가 뜨며
+                                접속이 차단됩니다.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- FAQ -->
         <section id="faq">
             <div class="section-header">
@@ -810,7 +896,8 @@
             </div>
             <div class="card" style="margin-bottom: 20px;">
                 <h3>Q. 사본 만들기가 개인 계정으로만 됩니다.</h3>
-                <p>A. 개인 계정으로 로그인된 상태에서 사본을 만들어서 그렇습니다. 사본 만들기 페이지 하단의 계정명을 클릭하여 교육청 계정으로 전환한 후 다시 시도해주세요.</p>
+                <p>A. 개인 계정으로 로그인된 상태라서 그렇습니다. <strong>시크릿 모드(크롬)나 프라이빗 모드</strong>를 열어 링크를 붙여넣고 진행하시면 개인 계정 로그아웃 없이 교육청
+                    계정으로만 로그인하여 진행할 수 있습니다.</p>
             </div>
             <div class="card" style="margin-bottom: 20px;">
                 <h3>Q. 교육청 워크스페이스 계정은 어떻게 만드나요?</h3>
@@ -820,15 +907,17 @@
                 <h3>Q. "권한이 필요합니다"라고 떠요.</h3>
                 <p>A. 배포 시 '액세스 권한'을 '모든 사용자'로 설정하지 않아서 그렇습니다. 다시 배포하여 권한 설정을 확인해주세요.</p>
             </div>
+
             <div class="card" style="margin-bottom: 20px;">
-                <h3>Q. 설문을 마감(종료)하고 싶어요.</h3>
-                <p>A. 우측 상단 <strong>배포 > 배포 관리</strong> 메뉴로 이동하여, 현재 활성화된 배포 버전을 <strong>'보관(Archive)'</strong> 처리하면 더
-                    이상 접속할 수 없게 됩니다.</p>
-            </div>
-            <div class="card" style="margin-bottom: 20px;">
-                <h3>Q. 링크를 클릭했는데 "현재 파일을 열 수 없습니다"라고 떠요.</h3>
+                <h3>Q. 배포한 링크를 클릭했는데 "현재 파일을 열 수 없습니다"라고 떠요.</h3>
                 <p>A. 브라우저에 여러 구글 계정이 로그인되어 있어 발생하는 문제입니다. <strong>시크릿 모드(크롬)나 프라이빗 모드</strong>를 열어 주소를 붙여넣거나, 다른 계정을
                     로그아웃한 후 시도해주세요.</p>
+            </div>
+            <div class="card" style="margin-bottom: 20px;">
+                <h3>Q. 사본으로 만든 구글 시트를 못 찾겠어요.</h3>
+                <p>A. 구글 드라이브의 <strong><a href="https://drive.google.com/drive/my-drive" target="_blank"
+                            style="text-decoration: underline;">내 드라이브</a></strong>에 있습니다. 드라이브에서 "톡톡 신청서"로 검색하시면 찾을 수
+                    있습니다.</p>
             </div>
             <div class="card">
                 <h3>Q. 신청 내역을 삭제하고 싶어요.</h3>
